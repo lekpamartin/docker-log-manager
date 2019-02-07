@@ -1,17 +1,17 @@
 #!/bin/bash
 
-SGDSI_REPO="lekpamartin"
+REPO="lekpamartin"
 
 TYPE="logstash-docker"
 TAG="6.6.0"
 
 docker build \
         --no-cache \
-        -t ${SGDSI_REPO}/${TYPE}:"${TAG}" .
+        -t ${REPO}/${TYPE}:"${TAG}" .
 
 if [ "$?" == 0 ]; then
-        echo -e "\n\t\t\t- status : ${SGDSI_REPO}/${TYPE}:${TAG} -> OK"
-        docker push ${SGDSI_REPO}/${TYPE}:${TAG}
+        echo -e "\n\t\t\t- status : ${REPO}/${TYPE}:${TAG} -> OK"
+        docker push ${REPO}/${TYPE}:${TAG}
 else
-        echo -e "\n\t\t\t- status : ${SGDSI_REPO}/${TYPE}:${TAG} -> KO"
+        echo -e "\n\t\t\t- status : ${REPO}/${TYPE}:${TAG} -> KO"
 fi

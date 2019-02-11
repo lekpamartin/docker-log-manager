@@ -2,7 +2,7 @@
 
 REPO="lekpamartin"
 
-TYPE="filebeat-docker"
+TYPE="filebeat"
 TAG="6.6.0"
 
 docker build \

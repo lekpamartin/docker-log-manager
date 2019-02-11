@@ -25,6 +25,7 @@ services:
       - docker-log-manager-net
     labels:
       org.label-schema.group: "docker-log-manager"
+      co.elastic.logs/disable: true
 
   logstash:
     image: lekpamartin/logstash-docker:6.6.0
@@ -35,3 +36,15 @@ services:
       - docker-log-manager-net
     labels:
       org.label-schema.group: "docker-log-manager"
+      co.elastic.logs/disable: true
+
+  elasticsearch:
+    image: lekpamartin/elasticsearch-docker:6.6.0
+    container_name: elasticsearch-docker-log-manager
+    hostname: elasticsearch-docker-log-manager
+    restart: unless-stopped
+    networks:
+      - docker-log-manager-net
+    labels:
+      org.label-schema.group: "docker-log-manager"
+      co.elastic.logs/disable: true

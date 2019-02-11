@@ -18,7 +18,7 @@ docker run -d \
 
 ## Configuration
 
-### HTTPD / Apache
+### [Docker] HTTPD / Apache
 
 ```bash
 docker run \
@@ -32,4 +32,19 @@ docker run \
   --name my-apache-app \
   -p 8080:80 \
   httpd:2.4
+```
+
+### syslog-ng
+
+```bash
+destination d_logstash_tcp_over_tls {
+	tcp("${data.host}"
+		port(${data.port})
+		tls(
+			ca-dir("/etc/syslog-ng/conf.d/ssl/ca.d")
+			key_file("/etc/syslog-ng/conf.d/ssl/server-key.pem")
+			cert_file("/etc/syslog-ng/conf.d/ssl/server-cert.pem")
+		)
+	);
+};
 ```

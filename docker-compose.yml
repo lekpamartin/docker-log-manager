@@ -1,0 +1,27 @@
+version: '3'
+
+networks:
+  docker-log-manager-net:
+    driver: bridge
+
+volumes:
+    filebeat-data: {}
+
+services:
+
+  filebeat:
+    image: lekpamartin/filebeat-docker:6.6.0
+    container_name: filebeat-docker-log-manager
+    hostname: filebeat
+    user: root
+    volumes:
+      - filebeat-data:/usr/share/filebeat/data
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - LOGSTASH_HOSTS="logstash:5044"
+    restart: unless-stopped
+    networks:
+      - docker-log-manager-net
+    labels:
+      org.label-schema.group: "docker-log-manager"

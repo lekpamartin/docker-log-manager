@@ -11,7 +11,31 @@ filebeat.autodiscover:
 processors:
 - add_cloud_metadata: ~
 
-output.elasticsearch:
-  hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
-  username: '${ELASTICSEARCH_USERNAME:}'
-  password: '${ELASTICSEARCH_PASSWORD:}'
+output.logstash:
+  enabled: true
+  hosts: ['${LOGSTASH_HOSTS:logstash:5044}']
+  worker: ${LOGSTASH_WORKER:1}
+  compression_level: ${LOGSTASH_COMPRESSION_LEVEL:3}
+  escape_html: ${LOGSTASH_ESCAPE_HTML:true}
+  ttl: ${LOGSTASH_TTL:30s}
+  loadbalance: false
+  pipelining: 2
+  slow_start: false
+  backoff.init: 1s
+  backoff.max: 60s
+  index: 'filebeat'
+  #proxy_url: socks5://user:password@socks5-server:2233
+  #proxy_use_local_resolver: false
+  #ssl.enabled: true
+  #ssl.verification_mode: full
+  #ssl.supported_protocols: [TLSv1.0, TLSv1.1, TLSv1.2]
+  #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
+  #ssl.certificate: "/etc/pki/client/cert.pem"
+  #ssl.key: "/etc/pki/client/cert.key"
+  #ssl.key_passphrase: ''
+  #ssl.cipher_suites: []
+  #ssl.curve_types: []
+  #ssl.renegotiation: never
+  #max_retries: 3
+  #bulk_max_size: 2048
+  #timeout: 30s

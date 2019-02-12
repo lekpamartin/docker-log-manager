@@ -10,7 +10,7 @@ volumes:
 services:
 
   filebeat:
-    image: lekpamartin/filebeat-docker:6.6.0
+    image: lekpamartin/filebeat:6.6.0
     container_name: filebeat-docker-log-manager
     hostname: filebeat-docker-log-manager
     user: root
@@ -28,7 +28,7 @@ services:
       co.elastic.logs/disable: true
 
   logstash:
-    image: lekpamartin/logstash-docker:6.6.0
+    image: lekpamartin/logstash:6.6.0
     container_name: logstash-docker-log-manager
     hostname: logstash-docker-log-manager
     restart: unless-stopped
@@ -39,7 +39,7 @@ services:
       co.elastic.logs/disable: true
 
   elasticsearch:
-    image: lekpamartin/elasticsearch-docker:6.6.0
+    image: lekpamartin/elasticsearch:6.6.0
     container_name: elasticsearch-docker-log-manager
     hostname: elasticsearch-docker-log-manager
     restart: unless-stopped

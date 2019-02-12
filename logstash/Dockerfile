@@ -3,4 +3,6 @@ LABEL maintainer="LEKPA"
 
 COPY files/conf.d /usr/share/logstash/config/conf.d
 
+USER root
 RUN yum -y update
+USER logstash

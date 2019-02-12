@@ -2,7 +2,7 @@
 
 REPO="lekpamartin"
 
-TYPE="logstash-docker"
+TYPE="logstash"
 TAG="6.6.0"
 
 docker build \

@@ -2,7 +2,7 @@
 
 REPO="lekpamartin"
 
-TYPE="elasticsearch-docker"
+TYPE="elasticsearch"
 TAG="6.6.0"
 
 docker build \

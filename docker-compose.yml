@@ -1,7 +1,7 @@
 version: '3.5'
 
 networks:
-  docker-log-manager-net:
+  docker-containers-log-manager-net:
     driver: bridge
 
 volumes:
@@ -9,10 +9,10 @@ volumes:
 
 services:
 
-  filebeat:
-    image: lekpamartin/filebeat:6.5.0
-    container_name: filebeat-docker-log-manager
-    hostname: filebeat-docker-log-manager
+  filebeat-docker-containers-log-manager:
+    image: lekpamartin/filebeat
+    container_name: filebeat-docker-containers-log-manager
+    hostname: filebeat-docker-containers-log-manager
     user: root
     volumes:
       - filebeat-data:/usr/share/filebeat/data
@@ -22,29 +22,31 @@ services:
 #      - LOGSTASH_HOSTS="logstash:5044"
     restart: unless-stopped
     networks:
-      - docker-log-manager-net
+      - docker-containers-log-manager-net
     labels:
-      org.label-schema.group: "docker-log-manager"
+      org.label-schema.group: "docker-containers-log-manager"
       co.elastic.logs/disable: true
 
-  logstash:
-    image: lekpamartin/logstash:6.5.0
-    container_name: logstash-docker-log-manager
-    hostname: logstash-docker-log-manager
+  logstash-docker-containers-log-manager:
+    image: lekpamartin/logstash
+    container_name: logstash-docker-containers-log-manager
+    hostname: logstash-docker-containers-log-manager
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch-docker-containers-log-manager:9200
     restart: unless-stopped
     networks:
-      - docker-log-manager-net
+      - docker-containers-log-manager-net
     labels:
-      org.label-schema.group: "docker-log-manager"
+      org.label-schema.group: "docker-containers-log-manager"
       co.elastic.logs/disable: true
 
-  elasticsearch:
-    image: lekpamartin/elasticsearch:6.5.0
-    container_name: elasticsearch-docker-log-manager
-    hostname: elasticsearch-docker-log-manager
+  elasticsearch-docker-containers-log-manager:
+    image: lekpamartin/elasticsearch
+    container_name: elasticsearch-docker-containers-log-manager
+    hostname: elasticsearch-docker-containers-log-manager
     restart: unless-stopped
     networks:
-      - docker-log-manager-net
+      - docker-containers-log-manager-net
     labels:
-      org.label-schema.group: "docker-log-manager"
+      org.label-schema.group: "docker-containers-log-manager"
       co.elastic.logs/disable: true

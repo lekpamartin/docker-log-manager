@@ -10,7 +10,7 @@ volumes:
 services:
 
   filebeat-docker-containers-log-manager:
-    image: lekpamartin/filebeat
+    image: lekpamartin/filebeat-docker-containers-log-manager
     container_name: filebeat-docker-containers-log-manager
     hostname: filebeat-docker-containers-log-manager
     user: root
@@ -18,8 +18,8 @@ services:
       - filebeat-data:/usr/share/filebeat/data
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-#    environment:
-#      - LOGSTASH_HOSTS="logstash:5044"
+    environment:
+      - LOGSTASH_HOSTS="logstash-docker-containers-log-manager:5044"
     restart: unless-stopped
     networks:
       - docker-containers-log-manager-net
@@ -28,11 +28,11 @@ services:
       co.elastic.logs/disable: true
 
   logstash-docker-containers-log-manager:
-    image: lekpamartin/logstash
+    image: lekpamartin/logstash-docker-containers-log-manager
     container_name: logstash-docker-containers-log-manager
     hostname: logstash-docker-containers-log-manager
     environment:
-      - ELASTICSEARCH_URL=http://elasticsearch-docker-containers-log-manager:9200
+      - ELASTICSEARCH_URL=elasticsearch-docker-containers-log-manager:9200
     restart: unless-stopped
     networks:
       - docker-containers-log-manager-net
@@ -41,7 +41,7 @@ services:
       co.elastic.logs/disable: true
 
   elasticsearch-docker-containers-log-manager:
-    image: lekpamartin/elasticsearch
+    image: lekpamartin/elasticsearch-docker-containers-log-manager
     container_name: elasticsearch-docker-containers-log-manager
     hostname: elasticsearch-docker-containers-log-manager
     restart: unless-stopped

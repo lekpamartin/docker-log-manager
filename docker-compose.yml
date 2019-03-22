@@ -23,7 +23,7 @@ services:
     image: lekpamartin/kibana-docker-containers-log-manager
     hostname: kibana
     environment:
-      - ELASTICSEARCH_URL=elasticsearch:9200
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
     restart: unless-stopped
     networks:
       - docker-containers-log-manager-net

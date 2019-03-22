@@ -3,7 +3,7 @@
 REPO="lekpamartin"
 
 TYPE="filebeat"
-TAG="6.6.0"
+TAG="6.6.2"
 
 docker build \
         --no-cache \

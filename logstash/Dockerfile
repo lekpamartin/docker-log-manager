@@ -1,4 +1,4 @@
-FROM docker.elastic.co/logstash/logstash:6.5.0
+FROM docker.elastic.co/logstash/logstash:6.6.2
 LABEL maintainer="LEKPA"
 
 #COPY files/conf.d /usr/share/logstash/config/conf.d

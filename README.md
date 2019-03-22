@@ -1,4 +1,4 @@
-# docker-log-manager
+# docker-containers-log-manager
 
 ## Deployment 
 

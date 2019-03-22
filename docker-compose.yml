@@ -9,41 +9,52 @@ volumes:
 
 services:
 
-  filebeat-docker-containers-log-manager:
+  elasticsearch:
+    image: lekpamartin/elasticsearch-docker-containers-log-manager
+    hostname: elasticsearch
+    restart: unless-stopped
+    networks:
+      - docker-containers-log-manager-net
+    labels:
+      org.label-schema.group: "docker-containers-log-manager"
+      co.elastic.logs/disable: true
+
+  kibana:
+    image: lekpamartin/kibana-docker-containers-log-manager
+    hostname: kibana
+    environment:
+      - ELASTICSEARCH_URL=elasticsearch:9200
+    restart: unless-stopped
+    networks:
+      - docker-containers-log-manager-net
+    ports:
+      - "5601"
+    labels:
+      org.label-schema.group: "docker-containers-log-manager"
+      co.elastic.logs/disable: true
+
+  logstash:
+    image: lekpamartin/logstash-docker-containers-log-manager
+    hostname: logstash
+    environment:
+      - ELASTICSEARCH_URL=elasticsearch:9200
+    restart: unless-stopped
+    networks:
+      - docker-containers-log-manager-net
+    labels:
+      org.label-schema.group: "docker-containers-log-manager"
+      co.elastic.logs/disable: true
+
+  filebeat:
     image: lekpamartin/filebeat-docker-containers-log-manager
-    container_name: filebeat-docker-containers-log-manager
-    hostname: filebeat-docker-containers-log-manager
+    hostname: filebeat
     user: root
     volumes:
       - filebeat-data:/usr/share/filebeat/data
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
-      - LOGSTASH_HOSTS="logstash-docker-containers-log-manager:5044"
-    restart: unless-stopped
-    networks:
-      - docker-containers-log-manager-net
-    labels:
-      org.label-schema.group: "docker-containers-log-manager"
-      co.elastic.logs/disable: true
-
-  logstash-docker-containers-log-manager:
-    image: lekpamartin/logstash-docker-containers-log-manager
-    container_name: logstash-docker-containers-log-manager
-    hostname: logstash-docker-containers-log-manager
-    environment:
-      - ELASTICSEARCH_URL=elasticsearch-docker-containers-log-manager:9200
-    restart: unless-stopped
-    networks:
-      - docker-containers-log-manager-net
-    labels:
-      org.label-schema.group: "docker-containers-log-manager"
-      co.elastic.logs/disable: true
-
-  elasticsearch-docker-containers-log-manager:
-    image: lekpamartin/elasticsearch-docker-containers-log-manager
-    container_name: elasticsearch-docker-containers-log-manager
-    hostname: elasticsearch-docker-containers-log-manager
+      - LOGSTASH_HOSTS="logstash:5044"
     restart: unless-stopped
     networks:
       - docker-containers-log-manager-net

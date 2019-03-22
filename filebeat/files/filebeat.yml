@@ -13,7 +13,7 @@ processors:
 
 output.logstash:
   enabled: true
-  hosts: ['${LOGSTASH_HOSTS:logstash-docker-containers-log-manager:5044}']
+  hosts: ['${LOGSTASH_HOSTS:logstash:5044}']
   worker: ${LOGSTASH_WORKER:1}
   compression_level: ${LOGSTASH_COMPRESSION_LEVEL:3}
   escape_html: ${LOGSTASH_ESCAPE_HTML:true}

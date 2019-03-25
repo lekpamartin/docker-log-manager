@@ -8,30 +8,20 @@ docker-compose up -d
 
 ## Containers Configuration
 
+Add those labels in docker run or docker-compose
+
 ### Apache / HTTPD
-Sea labels in this example : 
 ```bash
-docker run \
-  --label co.elastic.logs/module=apache2 \
-  --label co.elastic.logs/fileset.stdout=access \
-  --label co.elastic.logs/fileset.stderr=error \
-  --detach=true \
-  --name my-apache-app \
-  -p 8080:80 \
-  httpd:2.4
+co.elastic.logs/module=apache2
+co.elastic.logs/fileset.stdout=access
+co.elastic.logs/fileset.stderr=error
 ```
 
 ### Nginx
-Sea labels in this example :
 ```bash
-docker run \
-  --label co.elastic.logs/module=nginx \
-  --label co.elastic.logs/fileset.stdout=access \
-  --label co.elastic.logs/fileset.stderr=error \
-  --detach=true \
-  --name my-nginx-app \
-  -p 8080:80 \
-  nginx
+co.elastic.logs/module=nginx
+co.elastic.logs/fileset.stdout=access
+co.elastic.logs/fileset.stderr=error
 ```
 
 ### syslog-ng

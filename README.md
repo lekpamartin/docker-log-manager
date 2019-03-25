@@ -1,14 +1,22 @@
 # docker-containers-log-manager
+Automaticaly parse and send containers logs to Elasticsearch and visualise it in Kibana. 
 
 ## Deployment 
 
 ```bash
+git clone https://github.com/lekpamartin/docker-log-manager.git
+cd docker-log-manager
 docker-compose up -d
 ```
 
 ## Containers Configuration
 
-Add those labels in docker run or docker-compose
+Add those labels in "docker run" or "docker-compose"
+
+### Disable logs parsing
+```bash
+co.elastic.logs/disable=true
+```
 
 ### Apache / HTTPD
 ```bash

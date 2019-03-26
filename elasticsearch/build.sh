@@ -2,11 +2,13 @@
 
 REPO="lekpamartin"
 
-TYPE="elasticsearch"
-TAG="6.6.2"
+TYPE="elasticsearch-docker-containers-log-manager"
+TAG=`grep FROM Dockerfile | cut -d ':' -f2`
 
 docker build \
         --no-cache \
+        --build-arg http_proxy="${http_proxy}" \
+        --build-arg https_proxy="${https_proxy}" \
         -t ${REPO}/${TYPE}:"${TAG}" .
 
 if [ "$?" == 0 ]; then

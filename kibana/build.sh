@@ -2,7 +2,7 @@
 
 REPO="lekpamartin"
 
-TYPE="filebeat-docker-containers-log-manager"
+TYPE="kibana-docker-containers-log-manager"
 TAG=`grep FROM Dockerfile | cut -d ':' -f2`
 
 docker build \

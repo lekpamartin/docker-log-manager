@@ -5,13 +5,17 @@ networks:
     driver: bridge
 
 volumes:
-    filebeat-data: {}
+    elasticsearch-data:
+    filebeat-data:
+    logstash-data:
 
 services:
 
   elasticsearch:
     image: lekpamartin/elasticsearch-docker-containers-log-manager
     hostname: elasticsearch
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
     restart: unless-stopped
     networks:
       - docker-containers-log-manager-net
@@ -36,6 +40,8 @@ services:
   logstash:
     image: lekpamartin/logstash-docker-containers-log-manager
     hostname: logstash
+    volumes:
+      - logstash-data:/usr/share/logstash/data
     environment:
       - ELASTICSEARCH_URL=elasticsearch:9200
     restart: unless-stopped

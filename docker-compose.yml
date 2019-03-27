@@ -7,6 +7,7 @@ networks:
 volumes:
     elasticsearch-data:
     filebeat-data:
+    kibana-data:
     logstash-data:
 
 services:
@@ -26,6 +27,8 @@ services:
   kibana:
     image: lekpamartin/kibana-docker-containers-log-manager
     hostname: kibana
+    volumes:
+      - kibana-data:/usr/share/kibana/data
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
     restart: unless-stopped

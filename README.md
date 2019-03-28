@@ -1,5 +1,5 @@
 # docker-containers-log-manager
-Automaticaly parse and send containers logs to Elasticsearch and visualise it in Kibana. 
+Automaticaly parse and send containers logs to Elasticsearch and visualise it in Kibana. It is base on labels defined on each containers 
 
 ## Deployment 
 

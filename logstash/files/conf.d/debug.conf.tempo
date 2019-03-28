@@ -1,0 +1,5 @@
+filter {
+	if [loglevel] == "debug" {
+		drop {}
+	}
+}

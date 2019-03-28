@@ -35,6 +35,7 @@ services:
     networks:
       - docker-containers-log-manager-net
     ports:
+      #- "5601:5601"
       - "5601"
     labels:
       org.label-schema.group: "docker-containers-log-manager"

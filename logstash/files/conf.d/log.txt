@@ -1,0 +1,29 @@
+curator 
+
+2019-03-29 08:37:00,451 INFO      Preparing Action ID: 1, "delete_indices"
+2019-03-29 08:37:00,457 INFO      Trying Action ID: 1, "delete_indices": Delete indices older than 21 days (based on index name). Ignore the error if the filter does not result in an actionable list of indices (ignore_empty_list) and exit cleanly.
+2019-03-29 08:37:00,473 INFO      DRY-RUN MODE.  No changes will be made.
+2019-03-29 08:37:00,473 INFO      (CLOSED) indices may be shown that may not be acted on by action "delete_indices".
+2019-03-29 08:37:00,473 INFO      DRY-RUN: delete_indices: docker-apache2-access-my-apache-app-2018.11 with arguments: {}
+2019-03-29 08:37:00,473 INFO      DRY-RUN: delete_indices: docker2-apache2-access-my-apache-app-2018.11 with arguments: {}
+2019-03-29 08:37:00,474 INFO      Action ID: 1, "delete_indices" completed.
+2019-03-29 08:37:00,474 INFO      Job completed.
+total 0
+2019-03-29 08:38:00,469 INFO      Preparing Action ID: 1, "delete_indices"
+2019-03-29 08:38:00,475 INFO      Trying Action ID: 1, "delete_indices": Delete indices older than 21 days (based on index name). Ignore the error if the filter does not result in an actionable list of indices (ignore_empty_list) and exit cleanly.
+2019-03-29 08:38:00,492 INFO      DRY-RUN MODE.  No changes will be made.
+2019-03-29 08:38:00,493 INFO      (CLOSED) indices may be shown that may not be acted on by action "delete_indices".
+2019-03-29 08:38:00,493 INFO      DRY-RUN: delete_indices: docker-apache2-access-my-apache-app-2018.11 with arguments: {}
+2019-03-29 08:38:00,493 INFO      DRY-RUN: delete_indices: docker2-apache2-access-my-apache-app-2018.11 with arguments: {}
+2019-03-29 08:38:00,493 INFO      Action ID: 1, "delete_indices" completed.
+2019-03-29 08:38:00,493 INFO      Job completed.
+
+
+
+2019-03-29 08:41:01,258 INFO      Preparing Action ID: 1, "delete_indices"
+2019-03-29 08:41:01,265 INFO      Trying Action ID: 1, "delete_indices": Delete indices older than 21 days (based on index name). Ignore the error if the filter does not result in an actionable list of indices (ignore_empty_list) and exit cleanly.
+2019-03-29 08:41:01,283 INFO      Deleting selected indices: [u'docker2-apache2-access-my-apache-app-2018.11', u'docker-apache2-access-my-apache-app-2018.11']
+2019-03-29 08:41:01,283 INFO      ---deleting index docker2-apache2-access-my-apache-app-2018.11
+2019-03-29 08:41:01,283 INFO      ---deleting index docker-apache2-access-my-apache-app-2018.11
+2019-03-29 08:41:01,356 INFO      Action ID: 1, "delete_indices" completed.
+2019-03-29 08:41:01,356 INFO      Job completed.

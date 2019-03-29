@@ -25,6 +25,17 @@ co.elastic.logs/fileset.stdout=access
 co.elastic.logs/fileset.stderr=error
 ```
 
+### ELASTIC STACK
+CURATOR
+```bash
+co.elastic.logs/module=elasticsearch_curator
+```
+ELASTICSEARCH
+```bash
+co.elastic.logs/module=elasticsearch
+```
+
+
 ### Nginx
 ```bash
 co.elastic.logs/module=nginx
